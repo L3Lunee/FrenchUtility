@@ -1,0 +1,150 @@
+{
+    "verify_role": "Membre",
+    "admin_role": "Administrateur",
+    "verify_channel": null,
+    "logs_channel": null,
+    "verify_channel_name": "vérification",
+    "logs_channel_name": "logs",
+    "daily_reward": 200,
+    "weekly_reward": 1000,
+    "message_reward": 1,
+    "message_cooldown": 60,
+    "vocal_reward": 1,
+    "exp_per_message": 5,
+    "exp_per_minute_vocal": 5,
+    "box_commune": {
+        "prix": 100,
+        "min": 5,
+        "max": 20,
+        "cooldown": 3600
+    },
+    "box_rare": {
+        "prix": 500,
+        "min": 20,
+        "max": 60,
+        "cooldown": 7200
+    },
+    "box_legendaire": {
+        "prix": 2000,
+        "min": 50,
+        "max": 150,
+        "cooldown": 14400
+    },
+    "box_items": {
+        "commune": {
+            "Trèfle porte-bonheur": 30,
+            "Autocollant doré": 25,
+            "Ticket bleu": 20,
+            "Pierre polie": 15,
+            "Plume rare": 10
+        },
+        "rare": {
+            "Médaille d'argent": 30,
+            "Coffret mystère": 25,
+            "Clé ancienne": 20,
+            "Cristal bleu": 15,
+            "Carte spéciale": 10
+        },
+        "legendaire": {
+            "Couronne légendaire": 30,
+            "Épée en or": 25,
+            "Gemme céleste": 20,
+            "Trophée doré": 15,
+            "Artefact ancien": 10
+        }
+    },
+    "box_paliers": [
+        {
+            "nom": "Flop",
+            "emoji": "💥",
+            "chance": 50,
+            "min": 0.25,
+            "max": 0.7
+        },
+        {
+            "nom": "Correct",
+            "emoji": "😐",
+            "chance": 32,
+            "min": 0.85,
+            "max": 1.25
+        },
+        {
+            "nom": "Bonne pioche",
+            "emoji": "😃",
+            "chance": 15,
+            "min": 1.4,
+            "max": 2.2
+        },
+        {
+            "nom": "JACKPOT",
+            "emoji": "🎰",
+            "chance": 3,
+            "min": 3.5,
+            "max": 6.0
+        }
+    ],
+    "box_chance_objet": {
+        "commune": 0.2,
+        "rare": 0.45,
+        "legendaire": 1.0
+    },
+    "box_valeur_objet": {
+        "commune": 120,
+        "rare": 600,
+        "legendaire": 2500
+    },
+    "antirob_1h_prix": 250,
+    "antirob_3h_prix": 500,
+    "antirob_1j_prix": 1750,
+    "antirob_cooldown": 3600,
+    "rob_min_percent": 0.35,
+    "rob_max_percent": 0.55,
+    "rob_chance_reussite": 0.5,
+    "rob_amende_percent": 0.15,
+    "rob_solde_minimum": 100,
+    "daily_streak_bonus": 0.35,
+    "daily_streak_max": 3.0,
+    "banque_interet_par_jour": 0.005,
+    "banque_interet_plafond": 5000,
+    "vocal_min_humains": 2,
+    "vente_taux": 0.6,
+    "niveau_annonce": true,
+    "niveau_roles": {},
+    "travail_cooldown": 7200,
+    "casino_mise_min": 10,
+    "casino_mise_max": 100000,
+    "captcha_timeout": 120,
+    "captcha_words": [
+        "chien",
+        "chat",
+        "maison",
+        "voiture",
+        "arbre",
+        "soleil",
+        "lune",
+        "etoile",
+        "fleur",
+        "livre",
+        "eau",
+        "feu",
+        "terre",
+        "air",
+        "vent",
+        "pluie",
+        "neige",
+        "glace",
+        "feuille",
+        "pierre",
+        "montagne",
+        "riviere",
+        "mer",
+        "ocean",
+        "ile",
+        "plage",
+        "sable",
+        "rocher",
+        "foret",
+        "desert"
+    ],
+    "guilds": {}
+}

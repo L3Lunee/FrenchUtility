@@ -1,0 +1,21 @@
+# Secrets
+.env
+
+# Données des membres (soldes, stats, IDs Discord) — jamais sur GitHub
+data/
+config.json
+video_config.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Écritures atomiques et fichiers récupérés
+.tmp_*.json
+*.corrompu-*
+
+*.log
+.DS_Store
+Thumbs.db
