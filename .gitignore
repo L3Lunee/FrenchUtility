@@ -19,3 +19,7 @@ venv/
 *.log
 .DS_Store
 Thumbs.db
+
+# Tableau de bord web : gardé en local, jamais envoyé sur GitHub
+src/dashboard.json
+web/

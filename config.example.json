@@ -113,6 +113,12 @@
     "travail_cooldown": 7200,
     "casino_mise_min": 10,
     "casino_mise_max": 100000,
+    "crime_cooldown": 3600,
+    "crime_chance_reussite": 0.55,
+    "crime_min": 150,
+    "crime_max": 500,
+    "crime_amende_percent": 0.2,
+    "peche_cooldown": 1800,
     "captcha_timeout": 120,
     "captcha_words": [
         "chien",
