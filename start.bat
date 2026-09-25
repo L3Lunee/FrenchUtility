@@ -58,19 +58,22 @@ if errorlevel 1 (
 echo [OK] Token present dans .env.
 
 REM ---------- 4. Verifier les dependances ----------
-%PY% -c "import discord, dotenv" >nul 2>&1
+REM discord.py doit etre en version 2.4 ou plus : les versions plus anciennes
+REM n'ont pas les boutons persistants du bot (erreur "no attribute DynamicItem").
+REM Avant, on n'installait que si discord.py etait ABSENT : une vieille version
+REM deja installee n'etait jamais mise a jour.
+set "VERIF_DEPS=import sys,re,discord,dotenv;v=tuple(int(x) for x in re.findall(r'\d+',discord.__version__)[:2]);sys.exit(0 if v>=(2,4) else 1)"
+%PY% -c "%VERIF_DEPS%" >nul 2>&1
 if errorlevel 1 (
-    echo [..] Dependances manquantes, installation en cours...
-    %PY% -m pip install --disable-pip-version-check -r requirements.txt
-    %PY% -c "import discord, dotenv" >nul 2>&1
+    echo [..] Dependances manquantes ou discord.py trop ancien, mise a jour en cours...
+    %PY% -m pip install --disable-pip-version-check -U -r requirements.txt
+    %PY% -c "%VERIF_DEPS%" >nul 2>&1
     if errorlevel 1 (
         echo.
-        echo [ERREUR] L'installation des dependances a echoue.
+        echo [ERREUR] Impossible d'installer discord.py 2.4 ou plus recent.
         echo.
-        echo   Cause la plus frequente : discord.py 2.3.2 ne fonctionne pas
-        echo   sur Python 3.13 ou plus recent ^(le module audioop a ete retire^).
-        echo   Solution : installe une version plus recente avec
-        echo       %PY% -m pip install -U "discord.py^>=2.6"
+        echo   Lance cette commande a la main, puis relance start.bat :
+        echo       %PY% -m pip install -U -r requirements.txt
         echo.
         pause
         exit /b 1
