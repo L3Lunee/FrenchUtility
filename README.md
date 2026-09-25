@@ -178,6 +178,10 @@ start.bat                 # Windows
 démarrage. Voir `config.example.json` pour tous les réglages globaux (valeurs
 par défaut de tous les serveurs).
 
+Le bot fonctionne avec **discord.py 2.1 à 2.7** : si une version compatible
+est déjà installée, `start.bat` / `start.sh` la gardent ; sinon ils installent
+les dépendances du `requirements.txt`.
+
 > **Python 3.13+** — `discord.py` 2.3 ne s'installe plus (le module `audioop` a
 > quitté la bibliothèque standard). Le `requirements.txt` demande une version
 > compatible.

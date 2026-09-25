@@ -58,11 +58,10 @@ if errorlevel 1 (
 echo [OK] Token present dans .env.
 
 REM ---------- 4. Verifier les dependances ----------
-REM discord.py doit etre en version 2.4 ou plus : les versions plus anciennes
-REM n'ont pas les boutons persistants du bot (erreur "no attribute DynamicItem").
-REM Avant, on n'installait que si discord.py etait ABSENT : une vieille version
-REM deja installee n'etait jamais mise a jour.
-set "VERIF_DEPS=import sys,re,discord,dotenv;v=tuple(int(x) for x in re.findall(r'\d+',discord.__version__)[:2]);sys.exit(0 if v>=(2,4) else 1)"
+REM discord.py doit etre en version 2.1 ou plus. Si les dependances manquent
+REM ou si la version est trop ancienne, on les installe / met a jour ; sinon on
+REM garde la version deja installee.
+set "VERIF_DEPS=import sys,re,discord,dotenv;v=tuple(int(x) for x in re.findall(r'\d+',discord.__version__)[:2]);sys.exit(0 if v>=(2,1) else 1)"
 %PY% -c "%VERIF_DEPS%" >nul 2>&1
 if errorlevel 1 (
     echo [..] Dependances manquantes ou discord.py trop ancien, mise a jour en cours...
@@ -70,7 +69,7 @@ if errorlevel 1 (
     %PY% -c "%VERIF_DEPS%" >nul 2>&1
     if errorlevel 1 (
         echo.
-        echo [ERREUR] Impossible d'installer discord.py 2.4 ou plus recent.
+        echo [ERREUR] Impossible d'installer discord.py 2.1 ou plus recent.
         echo.
         echo   Lance cette commande a la main, puis relance start.bat :
         echo       %PY% -m pip install -U -r requirements.txt

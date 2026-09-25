@@ -11,9 +11,9 @@ set -a
 source .env
 set +a
 
-# discord.py 2.4 minimum : on installe ou met a jour les dependances si besoin
-# (une vieille version deja installee faisait planter le bot au demarrage).
-if ! python3 -c "import sys,re,discord,dotenv;v=tuple(int(x) for x in re.findall(r'\d+',discord.__version__)[:2]);sys.exit(0 if v>=(2,4) else 1)" 2>/dev/null; then
+# discord.py 2.1 minimum : on installe ou met a jour les dependances seulement
+# si elles manquent ou si la version est trop ancienne.
+if ! python3 -c "import sys,re,discord,dotenv;v=tuple(int(x) for x in re.findall(r'\d+',discord.__version__)[:2]);sys.exit(0 if v>=(2,1) else 1)" 2>/dev/null; then
     echo "[..] Dependances manquantes ou discord.py trop ancien, mise a jour en cours..."
     python3 -m pip install --disable-pip-version-check -U -r requirements.txt
 fi
