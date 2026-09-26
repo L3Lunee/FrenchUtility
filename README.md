@@ -25,7 +25,7 @@ DraftBot (configuration et utilitaires), de Bob (économie RP) et de Quark Log
 - la **modération** : sanctions avec MP au membre, automod, anti-raid, tickets, captcha ;
 - un **journal** détaillé, réglable événement par événement.
 
-**79 commandes** (131 en comptant chaque sous-commande), sous la limite de 100 de Discord.
+**80 commandes** (139 en comptant chaque sous-commande), sous la limite de 100 de Discord.
 Chaque serveur a ses propres soldes, niveaux, réglages, objets de box et prix :
 rien n'est mélangé entre deux serveurs.
 
@@ -91,6 +91,24 @@ les rôles ajoutés ou retirés, les sanctions, l'automod, les bans, le vocal, l
 salons et les rôles du serveur, ainsi que les tickets fermés (avec leur
 transcription). Chaque catégorie peut avoir son propre salon.
 
+## Gérer le serveur et les membres
+
+Les administrateurs créent des rôles et des salons et règlent les membres sans
+quitter Discord :
+
+| Commande | Rôle |
+| --- | --- |
+| `/creer role` | Nom, couleur, affichage séparé, mentionnable, et un modèle de permissions : membre, modérateur, aucune, administrateur |
+| `/creer salon` | Texte ou vocal, dans une catégorie, public ou **privé** (caché à @everyone), ouvert à un rôle, avec sujet ou nombre de places |
+| `/creer categorie` | Publique ou privée, ouverte à un rôle |
+| `/argent ajouter` · `/argent retirer` · `/argent definir` | Le portefeuille d'un membre |
+| `/xp ajouter` · `/xp retirer` · `/xp definir-niveau` | L'XP et le niveau d'un membre ; les rôles de récompense suivent |
+| `/addrole` · `/removerole` | Donner ou retirer des rôles |
+
+Un retrait d'XP peut faire redescendre de niveau, jamais sous 0. Si Discord
+refuse (permission manquante, rôle du bot trop bas), le bot explique quoi
+corriger.
+
 ## Vie du serveur
 
 Tickets (un par membre, prise en charge, transcription), captcha à bouton,
@@ -116,6 +134,7 @@ Tout se règle depuis Discord :
 /configurer annonces-niveau   annonces de niveau (salon dédié)
 /configurer role-niveau       rôle offert à un palier
 /automod regle                activer les protections
+/creer role|salon|categorie   créer des rôles et des salons
 ```
 
 La modération automatique, le captcha et le journal sont **désactivés par
@@ -156,7 +175,9 @@ place sous la limite de 100 :
 Nouveautés : `/profil`, `/crime`, `/peche`, `/kick`, `/ban`,
 `/casino pile-face`, `/casino des`, `/box-config prix`, `/enchere liste`,
 `/antiraid verrouiller`, `/ticket fermer`, `/sauvegarde info`,
-`/configurer economie`, `/configurer journal`, `/configurer journal-salon`.
+`/configurer economie`, `/configurer journal`, `/configurer journal-salon`,
+`/creer role`, `/creer salon`, `/creer categorie`, `/xp ajouter`, `/xp retirer`,
+`/xp definir-niveau`.
 
 Corrections notables :
 
@@ -209,7 +230,7 @@ src/          le code, un fichier JSON par module
   ui.json         couleurs, embeds, barres de progression, formatage
   economy.json    profils, banque, box, crime, pêche, missions, giveaways, classements
   games.json      jeux entre joueurs et casino
-  admin.json      enchères, argent, rôles, anti-raid, sauvegarde, captcha
+  admin.json      enchères, argent, XP, création de rôles et de salons, anti-raid, sauvegarde, captcha
   moderation.json sanctions, automod, journal
   community.json  /configurer, boutique de rôles, métiers, bienvenue, tickets…
 data/         généré au runtime, jamais versionné
