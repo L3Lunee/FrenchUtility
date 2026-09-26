@@ -409,7 +409,7 @@
     "        await _confirmer(message.channel, f\"❌ Utilisation : `{usage}`\", ui.ERREUR)",
     "        return",
     "    cible = message.mentions[0]",
-    "    if not isinstance(cible, discord.Member) or cible.id == message.author.id:",
+    "    if getattr(cible, \"top_role\", None) is None or cible.id == message.author.id:",
     "        await _confirmer(message.channel, \"❌ Cible invalide.\", ui.ERREUR)",
     "        return",
     "    minutes = None",

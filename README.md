@@ -121,6 +121,19 @@ Tout se règle depuis Discord :
 La modération automatique, le captcha et le journal sont **désactivés par
 défaut** : rien ne change sur un serveur tant qu'on n'a rien configuré.
 
+### Propriétaires du bot
+
+Les comptes listés dans `.env` (`PROPRIETAIRES=id1,id2`) ont les droits
+d'administrateur **du bot** sur tous les serveurs où ils sont, même sans être
+administrateurs de ces serveurs : toutes les commandes admin, les préfixes
+rapides, et aucune limite liée à leurs propres rôles (le bot reste limité par
+la position de son rôle). Par défaut, la liste est vide.
+
+Les commandes admin restent visibles de tous dans le menu `/` de Discord, pour
+que les propriétaires puissent les utiliser partout. Le bot vérifie les droits
+à chaque utilisation et refuse les membres qui ne sont ni administrateurs, ni
+propriétaires.
+
 ## Ce qui a changé depuis la v2
 
 Plusieurs commandes ont été regroupées, pour la lisibilité et pour garder de la
