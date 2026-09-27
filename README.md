@@ -6,7 +6,7 @@
 
 Python 3 · discord.py 2 · aucune base de données
 
-[![version](https://img.shields.io/badge/v3.0-000000?style=flat-square)](https://github.com/L3Lunee/FrenchUtility)
+[![version](https://img.shields.io/badge/v3.2-000000?style=flat-square)](https://github.com/L3Lunee/FrenchUtility)
 [![python](https://img.shields.io/badge/Python%203.10%2B-000000?style=flat-square)](#installation)
 [![license](https://img.shields.io/badge/MIT-000000?style=flat-square)](LICENSE)
 
@@ -25,7 +25,7 @@ DraftBot (configuration et utilitaires), de Bob (économie RP) et de Quark Log
 - la **modération** : sanctions avec MP au membre, automod, anti-raid, tickets, captcha ;
 - un **journal** détaillé, réglable événement par événement.
 
-**80 commandes** (139 en comptant chaque sous-commande), sous la limite de 100 de Discord.
+**81 commandes** (140 en comptant chaque sous-commande), sous la limite de 100 de Discord.
 Chaque serveur a ses propres soldes, niveaux, réglages, objets de box et prix :
 rien n'est mélangé entre deux serveurs.
 
@@ -94,7 +94,20 @@ transcription). Chaque catégorie peut avoir son propre salon.
 ## Gérer le serveur et les membres
 
 Les administrateurs créent des rôles et des salons et règlent les membres sans
-quitter Discord :
+quitter Discord, avec des boutons et des menus :
+
+- **`/gerer @membre`** ouvre la fiche du membre : portefeuille, banque, niveau,
+  rôles et avertissements, avec des boutons pour donner ou retirer de l'argent
+  (`500`, `2k`, `moitié`…), donner ou retirer de l'XP, le placer à un niveau,
+  changer son pseudo, avertir, exclure, lever l'exclusion, expulser, bannir,
+  et un menu pour lui donner ou retirer des rôles. La fiche se met à jour
+  après chaque action.
+- **`/panel`** a trois boutons : **Gérer un membre** (choisis-le dans un menu),
+  **Créer un rôle** (modèle de permissions, couleur, affichage séparé,
+  mentionnable, puis le nom) et **Créer un salon** (texte, vocal ou catégorie,
+  catégorie parente, rôles qui y ont accès, privé ou public, puis le nom).
+
+Les mêmes actions existent en commandes :
 
 | Commande | Rôle |
 | --- | --- |
@@ -105,9 +118,16 @@ quitter Discord :
 | `/xp ajouter` · `/xp retirer` · `/xp definir-niveau` | L'XP et le niveau d'un membre ; les rôles de récompense suivent |
 | `/addrole` · `/removerole` | Donner ou retirer des rôles |
 
-Un retrait d'XP peut faire redescendre de niveau, jamais sous 0. Si Discord
-refuse (permission manquante, rôle du bot trop bas), le bot explique quoi
-corriger.
+Un retrait d'XP peut faire redescendre de niveau, jamais sous 0. On ne peut
+toucher qu'aux rôles et aux membres situés sous son propre rôle (sauf le
+créateur du serveur et les propriétaires du bot), et jamais au-dessus du rôle
+du bot. Si Discord refuse (permission manquante, rôle du bot trop bas), le bot
+explique quoi corriger.
+
+Pour que tout fonctionne, donne au rôle du bot les permissions **Gérer les
+rôles**, **Gérer les salons**, **Gérer les pseudos**, **Exclure temporairement
+des membres**, **Expulser** et **Bannir**, et place ce rôle haut dans la liste
+des rôles.
 
 ## Vie du serveur
 
@@ -177,7 +197,7 @@ Nouveautés : `/profil`, `/crime`, `/peche`, `/kick`, `/ban`,
 `/antiraid verrouiller`, `/ticket fermer`, `/sauvegarde info`,
 `/configurer economie`, `/configurer journal`, `/configurer journal-salon`,
 `/creer role`, `/creer salon`, `/creer categorie`, `/xp ajouter`, `/xp retirer`,
-`/xp definir-niveau`.
+`/xp definir-niveau`, `/gerer`, et les boutons de gestion de `/panel`.
 
 Corrections notables :
 
@@ -208,6 +228,20 @@ bash start.sh             # Linux / hébergeur
 start.bat                 # Windows
 ```
 
+### Mettre à jour
+
+Arrête le bot, remplace **tous** les fichiers par ceux de la nouvelle version
+en gardant ton `.env`, `config.json` et le dossier `data/`, puis relance.
+La console affiche la version au démarrage :
+
+```
+FrenchUtility v3.2 — nouveautés : /gerer (fiche membre à boutons), /panel (…)
+```
+
+La version apparaît aussi en bas de chaque message du bot
+(« FrenchUtility v3.2 • … »). Si les nouvelles commandes n'apparaissent pas
+dans le menu `/`, recharge Discord avec **Ctrl + R**.
+
 `config.json` et le dossier `data/` sont créés automatiquement au premier
 démarrage. Voir `config.example.json` pour tous les réglages globaux (valeurs
 par défaut de tous les serveurs).
@@ -230,7 +264,7 @@ src/          le code, un fichier JSON par module
   ui.json         couleurs, embeds, barres de progression, formatage
   economy.json    profils, banque, box, crime, pêche, missions, giveaways, classements
   games.json      jeux entre joueurs et casino
-  admin.json      enchères, argent, XP, création de rôles et de salons, anti-raid, sauvegarde, captcha
+  admin.json      enchères, argent, XP, fiche /gerer, création de rôles et de salons, anti-raid, sauvegarde, captcha
   moderation.json sanctions, automod, journal
   community.json  /configurer, boutique de rôles, métiers, bienvenue, tickets…
 data/         généré au runtime, jamais versionné
